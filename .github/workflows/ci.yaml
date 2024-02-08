@@ -44,5 +44,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ needs.extract-release-tag.outputs.tag }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ needs.extract-release-tag.outputs.tag }}
