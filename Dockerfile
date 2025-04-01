@@ -1,6 +1,7 @@
 FROM quay.io/netboxcommunity/netbox:v4.2.6
 
-RUN /opt/netbox/venv/bin/pip install --no-warn-script-location \
+RUN curl https://bootstrap.pypa.io/get-pip.py | python \
+  && pip install --no-warn-script-location \
      netbox-topology-views==4.2.1
 
 COPY <<EOF /etc/netbox/config/plugins.py
