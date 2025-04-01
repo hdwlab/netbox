@@ -1,7 +1,7 @@
-FROM quay.io/netboxcommunity/netbox:v3.7.8
+FROM quay.io/netboxcommunity/netbox:v4.2.6
 
 RUN /opt/netbox/venv/bin/pip install --no-warn-script-location \
-     netbox-topology-views==3.9.1
+     netbox-topology-views==4.2.1
 
 COPY <<EOF /etc/netbox/config/plugins.py
 PLUGINS = ["netbox_topology_views"]
