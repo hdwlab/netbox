@@ -1,4 +1,4 @@
-FROM quay.io/netboxcommunity/netbox:v4.2.6
+FROM quay.io/netboxcommunity/netbox:v4.2.7
 
 RUN curl https://bootstrap.pypa.io/get-pip.py | python \
   && pip install --no-warn-script-location \
@@ -6,6 +6,13 @@ RUN curl https://bootstrap.pypa.io/get-pip.py | python \
 
 COPY <<EOF /etc/netbox/config/plugins.py
 PLUGINS = ["netbox_topology_views"]
+PLUGINS_CONFIG = {
+    'netbox_topology_views': {
+        'static_image_directory': 'netbox_topology_views/img',
+        'allow_coordinates_saving': True,
+        'always_save_coordinates': True
+    }
+}
 EOF
 
 # Collect static files \
