@@ -1,8 +1,9 @@
-FROM quay.io/netboxcommunity/netbox:v4.2.7
+FROM quay.io/netboxcommunity/netbox:v4.5.1
 
 RUN curl https://bootstrap.pypa.io/get-pip.py | python \
   && pip install --no-warn-script-location \
-     netbox-topology-views==4.2.1
+     netbox-topology-views==4.5.0 \
+  && mkdir -p /opt/netbox/netbox/static/netbox_topology_views/img
 
 COPY <<EOF /etc/netbox/config/plugins.py
 PLUGINS = ["netbox_topology_views"]
